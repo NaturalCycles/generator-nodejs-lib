@@ -130,14 +130,6 @@ class AppGenerator extends Generator {
         store: true,
       },
       {
-        name: 'moduleLicense',
-        message: 'package.json license',
-        default: 'MIT',
-        filter: str => convert(str, notEmptyStringSchema),
-        validate: (str: any) => inquirerValid(str, notEmptyStringSchema),
-        store: true,
-      },
-      {
         type: 'list',
         name: 'npmAccess',
         message: 'NPM access',

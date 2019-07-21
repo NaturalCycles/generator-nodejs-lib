@@ -26,5 +26,5 @@
   "version": "0.0.0",
   "description": "",
   "author": "<%= moduleAuthor %>",
-  "license": "<%= moduleLicense %>"
+  "license": "MIT"
 }
