@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/NaturalCycles/generator-nodejs-lib/compare/v1.0.2...v1.1.0) (2019-07-21)
+
+
+### Bug Fixes
+
+* tsconfig wrong path ([39d07c8](https://github.com/NaturalCycles/generator-nodejs-lib/commit/39d07c8))
+
+
+### Features
+
+* log version on start ([9c5a6e1](https://github.com/NaturalCycles/generator-nodejs-lib/commit/9c5a6e1))
+
 ## [1.0.2](https://github.com/NaturalCycles/generator-nodejs-lib/compare/v1.0.1...v1.0.2) (2019-07-21)
 
 
