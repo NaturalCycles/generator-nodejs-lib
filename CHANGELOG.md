@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/NaturalCycles/generator-nodejs-lib/compare/v1.1.0...v1.2.0) (2019-07-21)
+
+
+### Features
+
+* use yeoman-lib ([a4d5a4a](https://github.com/NaturalCycles/generator-nodejs-lib/commit/a4d5a4a))
+
 # [1.1.0](https://github.com/NaturalCycles/generator-nodejs-lib/compare/v1.0.2...v1.1.0) (2019-07-21)
 
 
