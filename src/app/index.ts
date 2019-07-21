@@ -80,7 +80,6 @@ class AppGenerator extends Generator {
         name: 'npmName',
         message: 'npm project name (including scope, if needed, e.g @angular/builder)',
         default: _.kebabCase(this.appname), // Default to current folder name
-        filter: _.kebabCase,
         validate: async (npmName: any) => {
           const avail = await checkNpmName(npmName).catch(err => {
             console.log(err)
@@ -96,7 +95,8 @@ class AppGenerator extends Generator {
         store: true,
       },
     ])
-    const [npmNameWithoutScope, npmScope] = answers1.npmName.split('/').reverse()
+
+    const { npmNameWithoutScope, npmScope } = parseNpmName(answers1.npmName)
 
     const answers2 = await this.prompt<Answers2>([
       {
@@ -204,4 +204,12 @@ export default AppGenerator
 function inquirerValid (value: any, schema: AnySchemaTyped<any>): true | string {
   const { error } = getValidationResult(value, schema)
   return error ? error.message : true
+}
+
+function parseNpmName (npmName: string): { npmScope?: string; npmNameWithoutScope: string } {
+  const [npmNameWithoutScope, npmScope] = npmName.split('/').reverse()
+  return {
+    npmScope,
+    npmNameWithoutScope,
+  }
 }
