@@ -1,0 +1,42 @@
+{
+  "name": "@naturalcycles/generator-nodejs-lib",
+  "scripts": {
+    "build-copy": "kpy ./src '**/templates/**' ./generators --dotfiles",
+    "build": "tsc && yarn build-copy",
+    "build-prod": "tsc -P ./tsconfig.prod.json && yarn build-copy"
+  },
+  "dependencies": {
+    "@naturalcycles/nodejs-lib": "^6.7.0",
+    "lodash": "^4.17.15",
+    "npm-name": "^5.5.0",
+    "yeoman-generator": "^4.0.1"
+  },
+  "devDependencies": {
+    "@naturalcycles/dev-lib": "^7.14.1",
+    "@naturalcycles/semantic-release": "^1.0.0",
+    "@types/lodash": "^4.14.136",
+    "@types/node": "^12.6.8",
+    "@types/yeoman-generator": "^3.1.3",
+    "jest": "^24.8.0"
+  },
+  "files": [
+    "generators"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NaturalCycles/generator-nodejs-lib"
+  },
+  "engines": {
+    "node": ">=10.13"
+  },
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "version": "0.0.0",
+  "description": "Yeoman generator to create a Node.js lib",
+  "author": "Natural Cycles Team",
+  "license": "MIT"
+}

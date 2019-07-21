@@ -1,0 +1,30 @@
+{
+  "name": "<%= npmName %>",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {},
+  "files": [
+    "dist",
+    "src",
+    "!src/test",
+    "!src/**/*.test.ts",
+    "!src/**/__snapshots__",
+    "!src/**/__exclude"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "<%= npmAccess %>"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/<%= githubFullName %>"
+  },
+  "engines": {
+    "node": ">=10.13"
+  },
+  "version": "0.0.0",
+  "description": "",
+  "author": "<%= moduleAuthor %>",
+  "license": "<%= moduleLicense %>"
+}

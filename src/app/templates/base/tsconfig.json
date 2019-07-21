@@ -1,0 +1,10 @@
+{
+  "extends": "@naturalcycles/dev-lib/cfg/tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist"
+  },
+  "include": [
+    "../examples/src"
+  ],
+  "exclude": ["**/__exclude", "**/@linked"]
+}
