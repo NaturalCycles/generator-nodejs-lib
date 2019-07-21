@@ -6,17 +6,12 @@
     "build-prod": "tsc -P ./tsconfig.prod.json && yarn build-copy"
   },
   "dependencies": {
-    "@naturalcycles/nodejs-lib": "^6.7.0",
-    "lodash": "^4.17.15",
-    "npm-name": "^5.5.0",
-    "yeoman-generator": "^4.0.1"
+    "@naturalcycles/yeoman-lib": "^1.0.0"
   },
   "devDependencies": {
     "@naturalcycles/dev-lib": "^7.14.1",
     "@naturalcycles/semantic-release": "^1.0.0",
-    "@types/lodash": "^4.14.136",
     "@types/node": "^12.6.8",
-    "@types/yeoman-generator": "^3.1.3",
     "jest": "^24.8.0"
   },
   "files": [

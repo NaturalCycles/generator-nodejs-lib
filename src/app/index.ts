@@ -1,12 +1,4 @@
-import {
-  AnySchemaTyped,
-  convert,
-  getValidationResult,
-  stringSchema,
-} from '@naturalcycles/nodejs-lib'
-import _ = require('lodash')
-import * as checkNpmName from 'npm-name'
-import * as Generator from 'yeoman-generator'
+import { BaseAnswers, BaseGenerator, BaseOptions } from '@naturalcycles/yeoman-lib'
 import { projectDir } from '../paths.cnst'
 
 const YARN_DEV_DEPS = [
@@ -16,62 +8,25 @@ const YARN_DEV_DEPS = [
   'jest',
 ]
 
-interface Options {
-  skipQuestions?: boolean
-  skipInstall?: boolean
-}
+interface AllAnswers extends Answers, BaseAnswers {}
 
-interface Answers1 {
-  npmName: string
-}
-
-interface Answers2 {
-  githubOrg: string
-  githubRepoName: string
-  moduleAuthor: string
-  moduleLicense: string
+interface Answers {
   npmAccess: 'public' | 'protected'
 }
 
-interface Answers extends Answers1, Answers2 {
-  npmScope?: string
-  npmNameWithoutScope: string
-  githubFullName: string
-}
-
-const githubOrgSchema = stringSchema
-  .min(1)
-  .max(80)
-  .alphanum()
-const githubRepoSchema = stringSchema
-  .min(1)
-  .max(80)
-  .regex(/^[a-zA-Z0-9-_]*$/)
-const notEmptyStringSchema = stringSchema
-
-class AppGenerator extends Generator {
+class AppGenerator extends BaseGenerator {
   constructor (args: any, opts: any) {
     super(args, opts)
-    // console.log({args, opts})
-
-    this.option('skipQuestions', {
-      type: Boolean,
-    })
-
-    this.option('skipInstall', {
-      type: Boolean,
-    })
   }
 
-  private answers!: Answers
+  private answers!: AllAnswers
 
   async initializing (): Promise<void> {
-    const { version, name } = require(`${projectDir}/package.json`)
-    this.log(`\n\n${name}@${version}\n\n`)
+    await this._logVersion(projectDir)
   }
 
   async prompting (): Promise<void> {
-    const { skipQuestions } = this.options as Options
+    const { skipQuestions } = this.options as BaseOptions
 
     if (skipQuestions) {
       const { answers } = this.config.getAll()
@@ -81,54 +36,9 @@ class AppGenerator extends Generator {
       }
     }
 
-    const answers1 = await this.prompt<Answers1>([
-      {
-        name: 'npmName',
-        message: 'npm project name (including scope, if needed, e.g @angular/builder)',
-        default: _.kebabCase(this.appname), // Default to current folder name
-        validate: async (npmName: any) => {
-          const avail = await checkNpmName(npmName).catch(err => {
-            console.log(err)
-            return false
-          })
+    const baseAnswers = await this._getBaseAnswers()
 
-          if (!avail) {
-            return `${npmName} npm package is not available (taken or invalid)`
-          }
-
-          return true
-        },
-        store: true,
-      },
-    ])
-
-    const { npmNameWithoutScope, npmScope } = parseNpmName(answers1.npmName)
-
-    const answers2 = await this.prompt<Answers2>([
-      {
-        name: 'githubOrg',
-        message: 'GitHub Org / Author, e.g `NaturalCycles`',
-        default: 'NaturalCycles',
-        filter: str => convert(str, githubOrgSchema),
-        validate: (str: any) => inquirerValid(str, githubOrgSchema),
-        store: true,
-      },
-      {
-        name: 'githubRepoName',
-        message: 'Repo name on Github (excluding Org name)',
-        default: npmNameWithoutScope,
-        filter: str => convert(str, githubRepoSchema),
-        validate: (str: any) => inquirerValid(str, githubRepoSchema),
-        store: true,
-      },
-      {
-        name: 'moduleAuthor',
-        message: 'package.json author',
-        default: 'Natural Cycles Team',
-        filter: str => convert(str, notEmptyStringSchema),
-        validate: (str: any) => inquirerValid(str, notEmptyStringSchema),
-        store: true,
-      },
+    const answers = await this.prompt<Answers>([
       {
         type: 'list',
         name: 'npmAccess',
@@ -139,14 +49,9 @@ class AppGenerator extends Generator {
       },
     ])
 
-    const githubFullName = [answers2.githubOrg, answers2.githubRepoName].join('/')
-
     this.answers = {
-      ...answers1,
-      ...answers2,
-      npmScope,
-      npmNameWithoutScope,
-      githubFullName,
+      ...baseAnswers,
+      ...answers,
     }
 
     // this.config.setAll
@@ -155,59 +60,30 @@ class AppGenerator extends Generator {
   }
 
   async writing (): Promise<void> {
-    // await this._generatePackageJson()
-
-    this.fs.copyTpl(this.templatePath('base/**'), this.destinationPath(), this.answers, undefined, {
-      globOptions: { dot: true },
-    })
+    const copyOptions = { globOptions: { dot: true } }
+    this.fs.copyTpl(
+      this.templatePath('base/**'),
+      this.destinationPath(),
+      this.answers,
+      undefined,
+      copyOptions,
+    )
 
     // Hack for npm publish to work
     this.fs.move(this.destinationPath('_package.json'), this.destinationPath('package.json'))
   }
 
   async install (): Promise<void> {
-    const { skipInstall } = this.options as Options
+    const { skipInstall } = this.options as BaseOptions
     if (skipInstall) return
 
-    // const cmd = [`yarn add -D`, ...YARN_DEV_DEPS].join(' ')
-    // console.log(`Will do ${c.bold.green(cmd)}`)
-
-    // await this.yarnInstall(YARN_DEV_DEPS, {dev: true})
     await this.spawnCommandSync(`yarn`, ['add', '-D', ...YARN_DEV_DEPS])
-
     await this.spawnCommandSync(`yarn`, ['update-from-dev-lib'])
   }
 
   async end (): Promise<void> {
     await this._setupGit()
   }
-
-  private async _setupGit (): Promise<void> {
-    const { githubFullName } = this.answers
-
-    const cmd = [
-      `git init`,
-      `git remote add origin git@github.com:${githubFullName}.git`,
-      `git add -A`,
-      `git commit -a -m "feat: first version"`,
-      `git status`,
-    ].join(' && ')
-
-    await this.spawnCommandSync(cmd, [], { shell: true })
-  }
 }
 
 export default AppGenerator
-
-function inquirerValid (value: any, schema: AnySchemaTyped<any>): true | string {
-  const { error } = getValidationResult(value, schema)
-  return error ? error.message : true
-}
-
-function parseNpmName (npmName: string): { npmScope?: string; npmNameWithoutScope: string } {
-  const [npmNameWithoutScope, npmScope] = npmName.split('/').reverse()
-  return {
-    npmScope,
-    npmNameWithoutScope,
-  }
-}

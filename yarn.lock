@@ -523,7 +523,7 @@
   resolved "https://registry.yarnpkg.com/@naturalcycles/js-lib/-/js-lib-8.2.1.tgz#685ca824ddcf3753e0098f43414a56ae1322b142"
   integrity sha512-CP3dJlnzhPhTsHPnar4wecqQ+aMo/T5M5N4tLaE0sfiYKs8j6N8JggwliyIbMXLbPuoX++UB55R32bQ4yfGYNg==
 
-"@naturalcycles/nodejs-lib@^6.7.0":
+"@naturalcycles/nodejs-lib@^6.8.0":
   version "6.8.0"
   resolved "https://registry.yarnpkg.com/@naturalcycles/nodejs-lib/-/nodejs-lib-6.8.0.tgz#e5fb64e7e56e95d906311cebed732a40199c182a"
   integrity sha512-vmP/L66B7hR0csBMH5+/pmR6kx604Jg9Cm8Dlxrdt8WEbwJTc00vWFXsXBr9XDh6GnFkP5pUwLYKXXdgSDvWVQ==
@@ -556,6 +556,17 @@
   integrity sha512-h10u3do0S9hnJu1xv6PkRxV5ahKamqLx3kKKfvkIErKwiS1uhU1W7TJXbnw38AGHsm3Kc89p9YxnrsdjqANYXg==
   dependencies:
     dayjs "^1.8.14"
+
+"@naturalcycles/yeoman-lib@^1.0.0":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@naturalcycles/yeoman-lib/-/yeoman-lib-1.0.1.tgz#caa025395a2403fe249fb479fd02db1a0b76964c"
+  integrity sha512-SbBzi3O93Vk3hkCbCoK0PtmHwaWUZzxvKm9Rhv2bC+1pgFDkoyZyLM5TuVunV7i937+H8rJfk3E7HJNK5ZJvAA==
+  dependencies:
+    "@naturalcycles/nodejs-lib" "^6.8.0"
+    "@types/yeoman-generator" "^3.1.3"
+    lodash "^4.17.15"
+    npm-name "^5.5.0"
+    yeoman-generator "^4.0.1"
 
 "@nodelib/fs.scandir@2.1.1":
   version "2.1.1"
@@ -851,11 +862,6 @@
   integrity sha512-MU1HIvWUme74stAoc3mgAi+aMlgKOudgEvQDIm1v4RkrDudBh1T+NFp5sftpBAdXdx1J0PbdpJ+M2EsSOi1djA==
   dependencies:
     "@types/jest-diff" "*"
-
-"@types/lodash@^4.14.136":
-  version "4.14.136"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.136.tgz#413e85089046b865d960c9ff1d400e04c31ab60f"
-  integrity sha512-0GJhzBdvsW2RUccNHOBkabI8HZVdOXmXbXhuKlDEd5Vv12P7oAVGfomGp3Ne21o5D/qu1WmthlNKFaoZJJeErA==
 
 "@types/lru-cache@^5.1.0":
   version "5.1.0"
