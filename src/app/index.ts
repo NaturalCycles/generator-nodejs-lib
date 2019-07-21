@@ -162,6 +162,9 @@ class AppGenerator extends Generator {
     this.fs.copyTpl(this.templatePath('base/**'), this.destinationPath(), this.answers, undefined, {
       globOptions: { dot: true },
     })
+
+    // Hack for npm publish to work
+    this.fs.move(this.destinationPath('_package.json'), this.destinationPath('package.json'))
   }
 
   async install (): Promise<void> {

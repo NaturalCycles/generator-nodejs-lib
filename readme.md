@@ -14,3 +14,9 @@
 List available options:
 
     npx yo @naturalcycles/nodejs-lib --help
+
+# Debug
+
+    mkdir tmp/test-project
+    cd tmp/test-project
+    yo @naturalcycles/nodejs-lib
