@@ -7,6 +7,7 @@ import {
 import _ = require('lodash')
 import * as checkNpmName from 'npm-name'
 import * as Generator from 'yeoman-generator'
+import { projectDir } from '../paths.cnst'
 
 const YARN_DEV_DEPS = [
   '@naturalcycles/semantic-release',
@@ -63,6 +64,11 @@ class AppGenerator extends Generator {
   }
 
   private answers!: Answers
+
+  async initializing (): Promise<void> {
+    const { version, name } = require(`${projectDir}/package.json`)
+    this.log(`\n\n${name}@${version}\n\n`)
+  }
 
   async prompting (): Promise<void> {
     const { skipQuestions } = this.options as Options
