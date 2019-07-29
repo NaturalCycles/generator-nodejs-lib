@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/NaturalCycles/generator-nodejs-lib/compare/v1.2.0...v1.3.0) (2019-07-29)
+
+
+### Features
+
+* bundlephobia badge ([6f35efb](https://github.com/NaturalCycles/generator-nodejs-lib/commit/6f35efb))
+
 # [1.2.0](https://github.com/NaturalCycles/generator-nodejs-lib/compare/v1.1.0...v1.2.0) (2019-07-21)
 
 
