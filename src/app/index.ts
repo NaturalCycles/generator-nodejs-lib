@@ -54,8 +54,6 @@ class AppGenerator extends BaseGenerator {
       ...answers,
     }
 
-    // this.config.setAll
-    // Object.entries(this.answers).forEach(([k, v]) => this.config.set(k, v))
     this.config.set('answers', this.answers)
   }
 
