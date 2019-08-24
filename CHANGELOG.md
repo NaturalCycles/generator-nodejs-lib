@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/NaturalCycles/generator-nodejs-lib/compare/v1.3.0...v1.4.0) (2019-08-24)
+
+
+### Features
+
+* deps ([050fe06](https://github.com/NaturalCycles/generator-nodejs-lib/commit/050fe06))
+
 # [1.3.0](https://github.com/NaturalCycles/generator-nodejs-lib/compare/v1.2.0...v1.3.0) (2019-07-29)
 
 
