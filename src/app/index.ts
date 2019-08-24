@@ -1,12 +1,9 @@
 import { BaseAnswers, BaseGenerator, BaseOptions } from '@naturalcycles/yeoman-lib'
 import { projectDir } from '../paths.cnst'
 
-const YARN_DEV_DEPS = [
-  '@naturalcycles/semantic-release',
-  '@naturalcycles/dev-lib',
-  '@types/node',
-  'jest',
-]
+const YARN_DEPS = ['@naturalcycles/js-lib', '@naturalcycles/nodejs-lib']
+
+const YARN_DEV_DEPS = ['@naturalcycles/dev-lib', '@types/node', 'jest']
 
 interface AllAnswers extends Answers, BaseAnswers {}
 
@@ -76,6 +73,7 @@ class AppGenerator extends BaseGenerator {
     if (skipInstall) return
 
     await this.spawnCommandSync(`yarn`, ['add', '-D', ...YARN_DEV_DEPS])
+    await this.spawnCommandSync(`yarn`, ['add', ...YARN_DEPS])
     await this.spawnCommandSync(`yarn`, ['update-from-dev-lib'])
   }
 
