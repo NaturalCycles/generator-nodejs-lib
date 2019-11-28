@@ -9,9 +9,12 @@
     "@naturalcycles/yeoman-lib": "^1.0.0"
   },
   "devDependencies": {
-    "@naturalcycles/dev-lib": "^7.14.1",
+    "@naturalcycles/dev-lib": "^9.2.0",
     "@types/node": "^12.6.8",
     "jest": "^24.8.0"
+  },
+  "resolutions": {
+    "@types/hapi__joi": "15.0.4"
   },
   "files": [
     "generators"

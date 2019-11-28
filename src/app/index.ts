@@ -12,17 +12,17 @@ interface Answers {
 }
 
 class AppGenerator extends BaseGenerator {
-  constructor (args: any, opts: any) {
+  constructor(args: any, opts: any) {
     super(args, opts)
   }
 
   private answers!: AllAnswers
 
-  async initializing (): Promise<void> {
+  async initializing(): Promise<void> {
     await this._logVersion(projectDir)
   }
 
-  async prompting (): Promise<void> {
+  async prompting(): Promise<void> {
     const { skipQuestions } = this.options as BaseOptions
 
     if (skipQuestions) {
@@ -54,7 +54,7 @@ class AppGenerator extends BaseGenerator {
     this.config.set('answers', this.answers)
   }
 
-  async writing (): Promise<void> {
+  async writing(): Promise<void> {
     const copyOptions = { globOptions: { dot: true } }
     this.fs.copyTpl(
       this.templatePath('base/**'),
@@ -68,7 +68,7 @@ class AppGenerator extends BaseGenerator {
     this.fs.move(this.destinationPath('_package.json'), this.destinationPath('package.json'))
   }
 
-  async install (): Promise<void> {
+  async install(): Promise<void> {
     const { skipInstall } = this.options as BaseOptions
     if (skipInstall) return
 
@@ -77,7 +77,7 @@ class AppGenerator extends BaseGenerator {
     await this.spawnCommandSync(`yarn`, ['update-from-dev-lib'])
   }
 
-  async end (): Promise<void> {
+  async end(): Promise<void> {
     await this._setupGit()
   }
 }
