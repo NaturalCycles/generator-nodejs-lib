@@ -6,15 +6,12 @@
     "build-prod": "tsc -P ./tsconfig.prod.json && yarn build-copy"
   },
   "dependencies": {
-    "@naturalcycles/yeoman-lib": "^1.0.0"
+    "@naturalcycles/yeoman-lib": "^1.0.4"
   },
   "devDependencies": {
-    "@naturalcycles/dev-lib": "^9.2.0",
-    "@types/node": "^12.6.8",
-    "jest": "^24.8.0"
-  },
-  "resolutions": {
-    "@types/hapi__joi": "15.0.4"
+    "@naturalcycles/dev-lib": "^10.13.0",
+    "@types/node": "^13.11.0",
+    "jest": "^25.2.7"
   },
   "files": [
     "generators"

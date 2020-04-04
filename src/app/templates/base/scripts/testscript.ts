@@ -1,6 +1,6 @@
 /*
 
-yarn tsn-script ./scripts/testscript.ts
+yarn tsn testscript.ts
 
  */
 
