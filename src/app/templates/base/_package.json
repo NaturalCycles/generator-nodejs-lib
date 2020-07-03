@@ -21,7 +21,7 @@
     "url": "https://github.com/<%= githubFullName %>"
   },
   "engines": {
-    "node": ">=10.13"
+    "node": ">=12.13.1"
   },
   "version": "0.0.0",
   "description": "",

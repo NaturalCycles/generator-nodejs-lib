@@ -9,11 +9,11 @@
 
     mkdir my-lib
     cd my-lib
-    yarn global add @naturalcycles/generator-nodejs-lib && npx yo @naturalcycles/nodejs-lib
+    npm init yo @naturalcycles/generator-nodejs-lib
 
 List available options:
 
-    npx yo @naturalcycles/nodejs-lib --help
+    npm init yo @naturalcycles/nodejs-lib --help
 
 # Debug
 
