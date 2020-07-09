@@ -9,6 +9,7 @@
 
     mkdir my-lib
     cd my-lib
+    npm install -g yo
     npm init yo @naturalcycles/generator-nodejs-lib
 
 List available options:
