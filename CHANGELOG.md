@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/NaturalCycles/generator-nodejs-lib/compare/v1.5.0...v1.5.1) (2021-04-04)
+
+
+### Bug Fixes
+
+* deps ([a00a971](https://github.com/NaturalCycles/generator-nodejs-lib/commit/a00a9718f52f11d4c80bd8e96d0b659749047263))
+
 # [1.5.0](https://github.com/NaturalCycles/generator-nodejs-lib/compare/v1.4.4...v1.5.0) (2021-04-04)
 
 
