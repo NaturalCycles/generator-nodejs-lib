@@ -1,6 +1,8 @@
 {
   "name": "<%= npmName %>",
-  "scripts": {},
+  "scripts": {
+    "prepare": "husky install"
+  },
   "dependencies": {},
   "devDependencies": {},
   "files": [

@@ -1,6 +1,7 @@
 {
   "name": "@naturalcycles/generator-nodejs-lib",
   "scripts": {
+    "prepare": "husky install",
     "build-copy": "kpy ./src '**/templates/**' ./generators --dotfiles",
     "build": "tsc && yarn build-copy",
     "build-prod": "tsc -P ./tsconfig.prod.json && yarn build-copy"
@@ -9,9 +10,9 @@
     "@naturalcycles/yeoman-lib": "^1.0.4"
   },
   "devDependencies": {
-    "@naturalcycles/dev-lib": "^10.13.0",
-    "@types/node": "^14.0.14",
-    "jest": "^26.1.0"
+    "@naturalcycles/dev-lib": "^12.1.3",
+    "@types/node": "^16.7.10",
+    "jest": "^27.1.0"
   },
   "files": [
     "generators"
