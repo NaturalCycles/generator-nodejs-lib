@@ -1,3 +1,10 @@
+## [1.5.3](https://github.com/NaturalCycles/generator-nodejs-lib/compare/v1.5.2...v1.5.3) (2021-09-03)
+
+
+### Bug Fixes
+
+* deps, remove faulty `npm-name` ([255dfcd](https://github.com/NaturalCycles/generator-nodejs-lib/commit/255dfcd6929e9aca0beb48a9c720a3cfd52ec62f))
+
 ## [1.5.2](https://github.com/NaturalCycles/generator-nodejs-lib/compare/v1.5.1...v1.5.2) (2021-04-04)
 
 

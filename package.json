@@ -30,7 +30,7 @@
   "keywords": [
     "yeoman-generator"
   ],
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "Yeoman generator to create a Node.js lib",
   "author": "Natural Cycles Team",
   "license": "MIT"
