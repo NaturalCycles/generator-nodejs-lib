@@ -11,11 +11,7 @@ jobs:
 #      CC_TEST_REPORTER_ID: 79976xxx set yours here
     steps:
       - { uses: actions/checkout@v2, with: { persist-credentials: false } }
-      - { uses: actions/setup-node@v2, with: { node-version: 14 } }
-      - uses: actions/cache@v2
-        with:
-          path: ./node_modules
-          key: deps-v1-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - { uses: actions/setup-node@v2, with: { node-version: 16, cache: 'yarn' } }
       - { name: yarn, run: yarn --frozen-lockfile }
 
       - name: build
@@ -27,8 +23,3 @@ jobs:
 #          ./cc-test-reporter before-build
           yarn test-ci
 #          ./cc-test-reporter after-build -t lcov
-
-      - uses: actions/upload-artifact@v2
-        with: { name: 'unit.xml', path: 'tmp/jest/unit.xml' }
-      - uses: actions/upload-artifact@v2
-        with: { name: 'coverage-unit', path: 'coverage/lcov-report' }

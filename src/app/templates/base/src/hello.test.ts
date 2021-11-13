@@ -2,3 +2,5 @@
 test('hello', () => {
   // hello
 })
+
+export {}
