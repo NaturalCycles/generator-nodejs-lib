@@ -8,7 +8,7 @@ const YARN_DEV_DEPS = ['@naturalcycles/dev-lib', '@types/node', 'jest']
 interface AllAnswers extends Answers, BaseAnswers {}
 
 interface Answers {
-  npmAccess: 'public' | 'protected'
+  npmAccess: 'public' | 'restricted'
 }
 
 class AppGenerator extends BaseGenerator {
@@ -41,7 +41,7 @@ class AppGenerator extends BaseGenerator {
         name: 'npmAccess',
         message: 'NPM access',
         default: 'public',
-        choices: ['public', 'protected'],
+        choices: ['public', 'restricted'],
         store: true,
       },
     ])
@@ -79,6 +79,8 @@ class AppGenerator extends BaseGenerator {
 
   async end(): Promise<void> {
     await this._setupGit()
+
+    // todo: delete that .yo.rc file
   }
 }
 
